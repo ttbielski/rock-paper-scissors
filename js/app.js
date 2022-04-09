@@ -1,15 +1,35 @@
+// Computer choice ///////////////////////
 function computerPlay() {
   const shapes = ['rock', 'paper', 'scissors'];
-
-  return shapes[getRandomInt(3)];
+  
+  return shapes[Math.floor(Math.random() * shapes.length)];
 }
+
+
+
+
+// Player choice /////////////////////////
+const rockBtn = document.querySelector('#rock');
+const paperBtn = document.querySelector('#paper');
+const scissorsBtn = document.querySelector('#scissors');
 
 function playerPlay() {
-  let playerShape = prompt('Enter your choice:').toLowerCase();
-  
-  return playerShape;
+
+  rockBtn.addEventListener('click', e => {
+    return 'rock';
+  });
+
+  paperBtn.addEventListener('click', e => {
+    return 'paper';
+  });
+
+  scissorsBtn.addEventListener('click', e => {
+    return 'scissors';
+  });
 }
 
+
+// One round ///////////////////////////////
 function playRound(playerSelection, computerSelection) {
   let result = '';
 
@@ -35,13 +55,11 @@ function playRound(playerSelection, computerSelection) {
 }
 
 function game() {
-  for (let i = 0; i < 5; i++) {
-    playRound(playerPlay(), computerPlay());
-  }
+
+  playRound(playerPlay, computerPlay);
+  
 }
 
-function getRandomInt(max) {
-  return Math.floor(Math.random() * max);
-}
+
 
 game();
