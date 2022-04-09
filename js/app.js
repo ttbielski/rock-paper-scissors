@@ -5,28 +5,20 @@ function computerPlay() {
   return shapes[Math.floor(Math.random() * shapes.length)];
 }
 
-
-
-
 // Player choice /////////////////////////
-const rockBtn = document.querySelector('#rock');
-const paperBtn = document.querySelector('#paper');
-const scissorsBtn = document.querySelector('#scissors');
+const playButtons = document.querySelectorAll('button');
 
-function playerPlay() {
+playButtons.forEach(button => {
+  button.addEventListener('click', e => {
 
-  rockBtn.addEventListener('click', e => {
-    return 'rock';
+    playRound(button.getAttribute('id'), computerPlay());
+    
   });
+});
 
-  paperBtn.addEventListener('click', e => {
-    return 'paper';
-  });
 
-  scissorsBtn.addEventListener('click', e => {
-    return 'scissors';
-  });
-}
+
+
 
 
 // One round ///////////////////////////////
