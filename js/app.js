@@ -1,3 +1,5 @@
+const playButtons = document.querySelectorAll('button');
+
 // Computer choice ///////////////////////
 function computerPlay() {
   const shapes = ['rock', 'paper', 'scissors'];
@@ -5,23 +7,7 @@ function computerPlay() {
   return shapes[Math.floor(Math.random() * shapes.length)];
 }
 
-// Player choice /////////////////////////
-const playButtons = document.querySelectorAll('button');
-
-playButtons.forEach(button => {
-  button.addEventListener('click', e => {
-
-    playRound(button.getAttribute('id'), computerPlay());
-    
-  });
-});
-
-
-
-
-
-
-// One round ///////////////////////////////
+// One round /////////////////////////////
 function playRound(playerSelection, computerSelection) {
   let result = '';
 
@@ -41,17 +27,22 @@ function playRound(playerSelection, computerSelection) {
     result = "You lost! Rock beats Scissors";
   }
 
-  console.log(result)
+  const resultDisplay = document.querySelector('#result');
+  resultDisplay.textContent = result;
 
   return result;
 }
 
 function game() {
 
-  playRound(playerPlay, computerPlay);
+  playButtons.forEach(button => {
+    button.addEventListener('click', e => {
+  
+      playRound(button.getAttribute('id'), computerPlay());
+      
+    });
+  });
   
 }
-
-
 
 game();
